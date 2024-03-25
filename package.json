@@ -1,0 +1,21 @@
+{
+  "name": "alpha-ai",
+  "version": "1.0.0",
+  "description": "A Chatbot about Anurag.",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "Alpha-ai"
+  },
+  "author": "Anurag Dutta",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.3.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0"
+  }
+}
