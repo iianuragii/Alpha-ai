@@ -3,6 +3,7 @@
 <head>
 <title>Alpha-AI</title>
 <style>
+ 
   body {
     font-family: sans-serif;
     display: flex;
@@ -66,13 +67,14 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  /* #loader { */
-  /* display: none; Hide by default */
-  /* position: absolute; */
-  /* top: 50%; */
-  /* left: 50%; */
-  /* transform: translate(-50%, -50%); */
-/* } */
+  #loader { 
+  display: none; 
+  position: absolute; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  }
+
   </style>
 </head>
 <body>
@@ -84,9 +86,9 @@
     <button type="submit">Send</button>
   </form>
 </div>
-<!-- <div id="loader">
+<div id="loader">
   <img src="loader.gif" width="150px" alt="Loading...">
-</div> -->
+</div>
   <script>
     const chatHistory = document.getElementById('chat-history');
     const userInput = document.getElementById('user-input');
@@ -124,10 +126,10 @@
     form.addEventListener('submit', (event) => {
       event.preventDefault(); // Prevent form submission
       const loader = document.getElementById('loader');
-      // loader.style.display = 'block'; // Show the loader
+      loader.style.display = 'block'; // Show the loader
       sendMessage().finally(() => {
-      // loader.style.display = 'none'; // Hide the loader after the message is sent
-    });
+      loader.style.display = 'none'; // Hide the loader after the message is sent
+    });;
     });
   </script>
 </body>
