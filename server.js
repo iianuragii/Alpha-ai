@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
+// const cors = require('cors');
 
-const dotenv = require('dotenv').config();
+require('dotenv').config();
 
+// app.use(cors());
 const port = 5000;
 
 const {
@@ -69,6 +71,8 @@ async function runChat(userInput) {
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
+
+
 app.get('/loader.gif', (req, res) => {
   res.sendFile(__dirname + '/loader.gif');
 });
