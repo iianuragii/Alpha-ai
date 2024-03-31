@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import '../styles/chat.css';
+import React, { useState } from 'react';
+import Navbar from './Navbar';
+import { Button, Grid, Input } from '@mui/material';
 
 function Homepage() {
   const [userInput, setUserInput] = useState('');
@@ -32,31 +33,78 @@ function Homepage() {
   }
 
   return (
-    <div>
-      <div id="chat-container">
-        <h1>Welcome to Anu.ai, an Alpha-AI initiative.</h1>
-        <div id="chat-history">
-          {chatHistory.map((entry, index) => (
-            <div key={index} className={entry.type + '-message'}>{entry.message}</div>
-          ))}
-        </div>
-        <form id="chat-form" onSubmit={sendMessage}>
-          <input
-            type="text"
-            id="user-input"
-            placeholder="Enter your message"
-            value={userInput}
-            onChange={e => setUserInput(e.target.value)}
-          />
-          <button type="submit" disabled={loading}>{loading ? 'Sending...' : 'Send'}</button>
-        </form>
-      </div>
-      {loading && (
-        <div id="loader" className="loader">
-          <img src="loader.gif" width="150px" alt="Loading..." />
-        </div>
-      )}
-    </div>
+    <>
+      <Grid>
+        <Navbar/>
+      </Grid>
+      <Grid
+        sx={{
+          fontFamily: 'sans-serif',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          minHeight: '95vh',
+          backgroundColor: '#053245',
+        }}
+      >
+        <Grid
+          id="chat-container"
+          sx={{
+            backgroundColor: '#ffffff',
+            borderRadius: '10px',
+            padding: '20px',
+            boxShadow: '0px 2px 5px rgba(0, 0, 0, 0.1)',
+            width: '400px',
+          }}
+        >
+          <h1 sx={{ textAlign: 'center', marginBottom: '20px', color: '#053245' }}>Welcome to Anu.ai, an Alpha-AI initiative.</h1>
+          <Grid
+            id="chat-history"
+            sx={{ height: '300px', overflowY: 'scroll' }}
+          >
+            {chatHistory.map((entry, index) => (
+              <Grid key={index} className={entry.type + '-message'}>{entry.message}</Grid>
+            ))}
+          </Grid>
+          <form id="chat-form" onSubmit={sendMessage} sx={{ display: 'flex' }}>
+            <Input
+              type="text"
+              id="user-input"
+              placeholder="Enter your message"
+              value={userInput}
+              onChange={e => setUserInput(e.target.value)}
+              sx={{
+                flexGrow: '1',
+                marginRight: '10px',
+                padding: '10px',
+                width:'70%',
+                border: '1px solid #ccc',
+                borderRadius: '5px',
+              }}
+            />
+            <Button
+              type="submit"
+              disabled={loading}
+              sx={{
+                backgroundColor: '#0e88bd',
+                color: 'white',
+                border: 'none',
+                padding: '10px 15px',
+                borderRadius: '5px',
+                cursor: 'pointer',
+              }}
+            >
+              {loading ? 'Sending...' : 'Send'}
+            </Button>
+          </form>
+        </Grid>
+        {loading && (
+          <Grid id="loader" className="loader" sx={{ display: 'none', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+            <img src="loader.gif" width="150px" alt="Loading..." />
+          </Grid>
+        )}
+      </Grid>
+    </>
   );
 }
 
