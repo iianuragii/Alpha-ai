@@ -1,6 +1,6 @@
 {
   "name": "alpha-ai",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Chatbot about Anurag.",
   "main": "server.js",
   "scripts": {
