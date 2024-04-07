@@ -57,7 +57,9 @@ function Homepage() {
             width: '400px',
           }}
         >
-          <h1 sx={{ textAlign: 'center', marginBottom: '20px', color: '#053245' }}>Welcome to Anu.ai, an Alpha-AI initiative.</h1>
+          <h1 sx={{ textAlign: 'center', marginBottom: '20px', color: '#053245' }}>
+            Tell me How Can I help you today?? 
+          </h1>
           <Grid
             id="chat-history"
             sx={{ height: '300px', overflowY: 'scroll' }}
