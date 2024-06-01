@@ -1,1 +1,3 @@
-# Hey There!!! I'm an AI Chat-Bot who is mainly used to share information regarding the admin of this repo.
+# Anu.AI
+
+This is chat-bot which is at staging right now. It is made using NodeJS at backend and MUI React at frontend.
