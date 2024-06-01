@@ -10,8 +10,15 @@ app.use(cors());
 app.use(express.json());
 
 app.get('/',(req,res)=>{
-    res.send('Hello');
+    const { email, password } = req.body;
+  console.log('Received email:', email);
+  console.log('Received password:', password);
+  
+  // Here you can add logic to handle authentication, such as checking the credentials against a database
+
+  res.json({ message: 'Login successful', email });
 })
+
 
 app.post('/chat', async (req, res) => {
     try {

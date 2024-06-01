@@ -1,32 +1,43 @@
 import * as React from 'react';
-// import Avatar from '@mui/material/Avatar';
+import axios from 'axios';
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-// import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from "react-router-dom";
 
-// const defaultTheme = createTheme();
+
 export default function SignIn() {
   const navigate = useNavigate();
+  const [value,setValue] = React.useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const userData ={
       email: data.get('email'),
       password: data.get('password'),
+    }
+    // const email = data.get('email');
+    // const password = data.get('password');
+    console.log({
+      email: {email},
+      password: {password},
     });
-    navigate('/chat')  
+    try {
+      const response = await axios.post('http://localhost:5000/', userData);
+      console.log('Response from backend:', response.data);
+      navigate('/chat');
+    } catch (error) {
+      console.error('Error sending data to backend:', error);
+    }
   };
+  
   
   return (
       <Container component="main" maxWidth="xs">
@@ -50,6 +61,8 @@ export default function SignIn() {
               label="Email Address"
               name="email"
               autoComplete="email"
+              value={value}
+              onChange={e => setValue(e.target.value)}
               autoFocus
             />
             <TextField
